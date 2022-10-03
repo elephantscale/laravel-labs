@@ -13,11 +13,19 @@ Lab Goals:
   sudo apt update -y && apt upgrade -y
 ```
 
-### STEP 2) Install PHP and PHP extensions
+### STEP 2) Install PHP
 
-Install PHP and PHP extensions needed to run the Laravel Framework.
 ```bash
-  sudo apt-get install php libapache2-mod-php php-dev php-zip php-curl php-pear php-mbstring php-mysql php-gd php-xml curl -y
+  sudo apt install software-properties-common
+```
+
+```bash
+  sudo add-apt-repository ppa:ondrej/php
+```
+
+Install PHP.
+```bash
+  sudo apt-get install php8.1-cgi php8.1-cli
 ```
 
 Verify if PHP is installed.
@@ -34,80 +42,84 @@ Verify if PHP is installed.
 ```
 
 
-### STEP 3)  Install Apache Web Server
-
-To install the Apache web server run the following.
-```bash
-  sudo apt install apache2
-```
-
-Let us start and enable Apache.
-```bash
-  sudo systemctl start apache2
-``````
-```bash
-  sudo systemctl enable apache2
-```
-### STEP 4) Creating Database for our Laravel App
-
-Our environment is on a LAMP stack we will use MariaDB as a database system. But you can choose different database system as Laravel supports wide variety of database systems like SQLite, MySQL, Postgres, and SQL Server.
-
-Let us install MariaDB.
-```bash
-  sudo apt install mariadb-server
-```
-
-Login to your MariaDB server.
-```bash
-  sudo mysql -u root -p
-```
-
-Create the database for our Laravel app.
-```bash
-  MariaDB [(none)]> create database laravel;
-  MariaDB [(none)]> grant all privileges on laravel.* to 'laravel'@'localhost' identified by 'mypassword';
-  MariaDB [(none)]> flush privileges;
-  MariaDB [(none)]> exit;
-```
-### STEP 5)Install Composer
+### STEP 3) Install Composer
 
 Composer is a package manager for PHP that provides a standard format for managing dependencies of PHP software and required libraries. 
 
 To install composer follow the steps below.
 
 ```bash
-  curl -sS https://getcomposer.org/installer | php
+  sudo apt update
 ```
 
 ```bash
-  sudo mv composer.phar /usr/local/bin/composer
+  cd ~
+  curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 ```
 
+Next, we’ll verify that the downloaded installer matches the SHA-384 hash for the latest installer found on the Composer Public Keys / Signatures page
+
 ```bash
-  sudo chmod +x /usr/local/bin/composer
-```
-Verify the installation.
+  HASH=`curl -sS https://composer.github.io/installer.sig
+````
+
+Now execute the following PHP code, as provided in the Composer download page, to verify that the installation script is safe to run:
+
+
 ```bash
-  composer --version
+    php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 ```
 ```bash
   Output:
-  Composer version 2.2.3 2021-12-31 12:18:53
+    Installer verified
 ```
-### STEP 6) Install the Laravel Framework
-First let us create a project directory.
 ```bash
-  sudo mkdir /var/www/laravel
+  sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+```
+```bash
+  Output:
+  All settings correct for using Composer
+  Downloading...
+
+  Composer (version 2.2.9) successfully installed to: /usr/local/bin/composer
+  Use it: php /usr/local/bin/composer
 ```
 
-Let us change directory to our project directory.
+Verify the installation.
 ```bash
-  cd /var/www/laravel
+  composer
 ```
+```bash
+  Output:
+     ______
+  / ____/___  ____ ___  ____  ____  ________  _____
+ / /   / __ \/ __ `__ \/ __ \/ __ \/ ___/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ (__  )  __/ /
+\____/\____/_/ /_/ /_/ .___/\____/____/\___/_/
+                    /_/
+Composer version Composer version 2.2.9 2022-03-15 22:13:37
+Usage:
+  command [options] [arguments]
+
+Options:
+  -h, --help                     Display this help message
+  -q, --quiet                    Do not output any message
+  -V, --version                  Display this application version
+      --ansi                     Force ANSI output
+      --no-ansi                  Disable ANSI output
+  -n, --no-interaction           Do not ask any interactive question
+      --profile                  Display timing and memory usage information
+      --no-plugins               Whether to disable plugins.
+  -d, --working-dir=WORKING-DIR  If specified, use the given directory as working directory.
+      --no-cache                 Prevent use of the cache
+  -v|vv|vvv, --verbose           Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+...
+```
+### STEP 4) Install the Laravel Framework
 
 Install the Laravel framework using composer.
 ```bash
-  composer create-project laravel/laravel myapp --prefer-dist
+  composer create-project laravel/laravel course
 ```
 ```bash
  Output:
@@ -121,83 +133,13 @@ Install the Laravel framework using composer.
   > @php artisan key:generate --ansi
   Application key set successfully.
 ```
-Check the Laravel version. First go to your myapp.
+Check the Laravel version. First go to your course folder.
 ```bash
-  cd myapp
+  cd course
 ```
 ```bash
-  php artisan
+  php artisan serve
 ```
-![Laravel Version](../images/laravel-version.png)
-
-#### Fix the permission of our project directory.
-
-Set the owner to www-data(Apache user).
-```bash
-  sudo chown -R www-data:www-data /var/www/laravel
-```
-
-Set all directories to 755 permission.
-```bash
- sudo find /var/www/laravel/ -type d -exec chmod 755 {} \;
-```
-
-Set all files to 644 permission.
-```bash
-  sudo find /var/www/wordpress/ -type f -exec chmod 644 {} \;
-```
-
-
-### STEP 7) Create Virtual Host for our Laravel App
-
-Let us create a virtual host.
-
-```bash
-  nano /etc/apache2/sites-available/laravel.conf
-```
-
-```bash
-  <VirtualHost *:80>
-     ServerAdmin admin@domain.com
-     DocumentRoot /var/www/laravel/myapp/public
-     ServerName domain.com
-
-
-     ErrorLog ${APACHE_LOG_DIR}/error.log
-     CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-     <Directory /var/www/laravel/>
-        Options +FollowSymlinks
-        AllowOverride All
-        Require all granted
-     </Directory>
-
-  </VirtualHost>
-
-```
-Note: Don’t forget to change the domain in the ServerName directive.
-
-Save the file and exit.
-
-Let us enable the laravel virtual host.
-```bash
-  sudo a2ensite laravel.conf
-```
-
-Also enable the Apache mod_rewrite.
-```bash
-  sudo a2enmod rewrite
-```
-
-Restart the Apache web server.
-```bash
-  sudo systemctl restart apache2
-```
-
-### STEP 8) Access Laravel App
-
-You have successfully configured your Laravel application. You can check it by accessing the domain set on your virtual host. Open your browser and type your domain e.g http://doamin.com.
 
 ![App Laravel](../images/laravel-site-1.png)
 
-If you want to secure your site and install SSL certificate.
