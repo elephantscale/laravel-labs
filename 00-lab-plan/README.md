@@ -1,13 +1,11 @@
 # Plan of lab writing
 
 * Start [here](https://laravel.com/docs/master/installation)
-    * Installation
+    * Installation - Marlon to finish
     * Meet Laravel
     * Why Laravel?
     * Your First Laravel Project
     * Laravel & Docker
-    * Getting Started On macOS
-    * Getting Started On Windows
     * Getting Started On Linux
     * Choosing Your Sail Services
     * Initial Configuration
