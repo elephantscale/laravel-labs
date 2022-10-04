@@ -35,10 +35,10 @@ Verify if PHP is installed.
 ```
 
 ```bash
-  Output:
-  PHP 7.4.3 (cli) (built: Nov 25 2021 23:16:22) ( NTS )
-  Copyright (c) The PHP Group
-  Zend Engine v3.4.0, Copyright (c) Zend Technologies
+PHP 8.1.11 (cli) (built: Sep 29 2022 22:28:49) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.1.11, Copyright (c) Zend Technologies
+    with Zend OPcache v8.1.11, Copyright (c), by Zend Technologies
 ```
 
 
