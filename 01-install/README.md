@@ -60,7 +60,7 @@ To install composer follow the steps below.
 Next, we’ll verify that the downloaded installer matches the SHA-384 hash for the latest installer found on the Composer Public Keys / Signatures page
 
 ```bash
-  HASH=`curl -sS https://composer.github.io/installer.sig
+  HASH=`curl -sS https://composer.github.io/installer.sig`
 ````
 
 Now execute the following PHP code, as provided in the Composer download page, to verify that the installation script is safe to run:
