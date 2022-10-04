@@ -42,14 +42,17 @@ Add the following code
         'title' =>'Movies',
         'movies' => [
             [
+                'id' => 1,
                 'name' => 'Scarface',
                 'year' => 1983
             ],
             [
+                'id' => 2,
                 'name' => 'Avatar',
                 'year' => 2009
             ],
             [
+                'id' => 3,
                 'name' => 'Avengers',
                 'year' => 2012
             ]
