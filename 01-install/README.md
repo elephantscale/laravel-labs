@@ -10,7 +10,7 @@ Lab Goals:
 
 
 ```bash
-  sudo apt update -y && apt upgrade -y
+  sudo apt update -y && sudo apt upgrade -y
 ```
 
 ### STEP 2) Install PHP
