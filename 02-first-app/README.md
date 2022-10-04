@@ -14,7 +14,9 @@
 ```
 ![image](https://user-images.githubusercontent.com/31894600/193714528-d404a231-bd97-4058-8126-ea5d4899d48b.png)
 
-### STEP 3)  Navigate to views folder, rename it to movies.blade.php
+### STEP 3) Rename file
+
+* Navigate to views folder, rename `welcome.blade.php` to `movies.blade.php`
 
 ![image](https://user-images.githubusercontent.com/31894600/193735502-29aa3f76-7005-4cc0-a651-cdcd55d18d33.png)
 
