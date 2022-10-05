@@ -40,8 +40,15 @@ Replace the up function with the following code
     }
 ```
  ![image](https://user-images.githubusercontent.com/31894600/193976793-5385ce93-ce0f-4cf5-8a78-74b1661e93f1.png)
+ 
+ 
+### STEP 4) Intall php-mysql extension
 
-### STEP 4) Run the migration to create the table on MySQL
+```bash
+sudo apt install php-mysql
+```
+
+### STEP 5) Run the migration to create the table on MySQL
 
 Run the following command
 
@@ -65,3 +72,37 @@ Output
   2022_10_05_032541_create_movies_table ................................... 37ms DONE
 ```
 
+### STEP 6) Check Tables on MySQL Database
+
+Access to the MySql console with the root user
+
+```bash
+mysql -u root -p
+```
+
+```bash
+use laravel_course;
+SHOW TABLES;
+```
+
+```bash
+Output
+
++--------------------------+
+| Tables_in_laravel_course |
++--------------------------+
+| failed_jobs              |
+| migrations               |
+| movies                   |
+| password_resets          |
+| personal_access_tokens   |
+| users                    |
++--------------------------+
+6 rows in set (0.00 sec)
+```
+
+Exit MySQL console
+
+```bash
+exit;
+```
