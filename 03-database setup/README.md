@@ -4,17 +4,17 @@
 
 
 ```bash
-	sudo apt update
+sudo apt update
 ```
 
 ```bash
-	sudo apt install mysql-server
+sudo apt install mysql-server
 ```
 
 Ensure that the server is running using the systemctl start command:
 
 ```bash
-	sudo systemctl start mysql.service
+sudo systemctl start mysql.service
 ```
 
 ### STEP 2) Configure MySQL 
@@ -22,25 +22,25 @@ Ensure that the server is running using the systemctl start command:
 First, open up the MySQL prompt:
 
 ```bash
-	sudo mysql
+sudo mysql
 ```
 
 The following example changes the authentication method to mysql_native_password:
 
 ```bash
-	ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 ```
 
 After making this change, exit the MySQL prompt:
 
 ```bash
-	exit
+exit
 ```
 
 Run the security script with sudo:
 
 ```bash
-	sudo mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
 ```bash
