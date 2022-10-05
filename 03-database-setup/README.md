@@ -122,3 +122,9 @@ Output
 
 Query OK, 1 row affected (0.01 sec)
 ```
+
+Exit MySQL console
+
+```bash
+exit;
+```
