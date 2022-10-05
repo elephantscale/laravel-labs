@@ -1,124 +1,67 @@
-# Setup MySQL Dagtabase
+# Integrate MySQL into the Laravel Project
 
-### STEP 1) Install MySQL Server package
+### STEP 1) Modify env file
 
+Navigate to the env file in your Laravel project and add the MySQL connection information
+
+![image](https://user-images.githubusercontent.com/31894600/193970845-de8c2905-f244-43a8-83fa-fc3ef40b4cab.png)
+
+### STEP 2) Create Migration for the Movie entitiy
+
+Run the following command
 
 ```bash
-sudo apt update
+php artisan make:migration create_movies_table
 ```
 
-```bash
-sudo apt install mysql-server
+The result of this command going to be a new file under the migrations folder
+
+![image](https://user-images.githubusercontent.com/31894600/193975104-18097b8a-ff0c-4957-bc3a-a53c25b7b43c.png)
+
+### STEP 3) Edit the created Migration file
+
+
+Replace the up function with the following code
+
+```php
+ public function up()
+    {
+        Schema::create('movies', function (Blueprint $table) {
+            $table->id();
+            $table->string('Title');
+            $table->string('Genre');
+            $table->string('Director');
+            $table->string('Producer');
+            $table->string('Actors');
+            $table->integer('Year');
+            $table->longText('Description');
+            $table->timestamps();
+        });
+    }
 ```
+ ![image](https://user-images.githubusercontent.com/31894600/193976793-5385ce93-ce0f-4cf5-8a78-74b1661e93f1.png)
 
-Ensure that the server is running using the systemctl start command:
+### STEP 4) Run the migration to create the table on MySQL
 
-```bash
-sudo systemctl start mysql.service
-```
-
-### STEP 2) Configure MySQL 
-
-First, open up the MySQL prompt:
+Run the following command
 
 ```bash
-sudo mysql
-```
-
-The following example changes the authentication method to mysql_native_password:
-
-```bash
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-```
-
-After making this change, exit the MySQL prompt:
-
-```bash
-exit
-```
-
-Run the security script with sudo:
-
-```bash
-sudo mysql_secure_installation
-```
-
-```bash
-Output
-
-Securing the MySQL server deployment.
-
-Connecting to MySQL using a blank password.
-
-VALIDATE PASSWORD COMPONENT can be used to test passwords
-and improve security. It checks the strength of password
-and allows the users to set only those passwords which are
-secure enough. Would you like to setup VALIDATE PASSWORD component?
-
-Press y|Y for Yes, any other key for No: Y
-
-There are three levels of password validation policy:
-
-LOW    Length >= 8
-MEDIUM Length >= 8, numeric, mixed case, and special characters
-STRONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
-
-Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG:
- 0
- 
-```
-
-As this app is a demo app please use 0 as the validation policy.
-In productive environments please use 2 is highly recommended.
-
-```bash
-Output
-
-Please set the password for root here.
-
-
-New password:
-
-Re-enter new password:
-
-```
-
-Please use the following as the MySql Password for the root user
-
-```bash
-Laravel1234!
-```
-```bash
-Output
-
-Estimated strength of the password: 100
-Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : Y
-```
-
-Exit from the MySql console
-
-```bash
-exit
-```
-
-### STEP 3) Create Database
-
-Access to the MySql console with the root user
-
-```bash
-mysql -u root -p
-```
-
-Use the password configured in the step 2.
-
-Run the following text to create 
-
-```bash
-CREATE Database laravel_course
+php artisan migrate
 ```
 
 ```bash
 Output
 
-Query OK, 1 row affected (0.01 sec)
+   INFO  Preparing database.  
+
+  Creating migration table .................................... 33ms DONE
+
+   INFO  Running migrations.  
+
+  2014_10_12_000000_create_users_table .................................... 63ms DONE
+  2014_10_12_100000_create_password_resets_table .......................... 57ms DONE
+  2019_08_19_000000_create_failed_jobs_table .............................. 54ms DONE
+  2019_12_14_000001_create_personal_access_tokens_table ................... 103ms DONE
+  2022_10_05_032541_create_movies_table ................................... 37ms DONE
 ```
+
