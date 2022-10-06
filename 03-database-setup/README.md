@@ -1,4 +1,4 @@
-# Setup MySQL Dagtabase
+# Setup MySQL Database
 
 ### STEP 1) Install MySQL Server package
 
