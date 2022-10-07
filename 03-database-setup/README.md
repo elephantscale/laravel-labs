@@ -11,6 +11,8 @@ sudo apt update
 sudo apt install mysql-server
 ```
 
+(If you have any problem with mysql install, try `mysql-server-8.0`)
+
 Ensure that the server is running using the systemctl start command:
 
 ```bash
