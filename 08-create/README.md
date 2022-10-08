@@ -136,5 +136,6 @@ Add the following code under each input in the 'movie-create.blade.php' changing
 @enderror
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/194712355-185adc72-c6ab-40db-8850-02f4821f9d47.png)
 
 
