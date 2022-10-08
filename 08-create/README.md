@@ -103,7 +103,7 @@ Route::get('/movies/create', [MoviesController::class, 'create']);
 
         Movie::create($formFields);
 
-        return redirect('/')->with('message', 'Movie created successfully!');
+        return redirect('/movies')->with('message', 'Movie created successfully!');
     }
 ```
 
