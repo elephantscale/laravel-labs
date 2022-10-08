@@ -11,14 +11,17 @@ Add following code
 <div>
     <h2>
         <a href="/movies/{{$Movie['id']}}">
-            {{$Movie['Title']}} - {{$Movie['Year']}}
+            {{$Movie['Title']}} 
         </a>
     </h2>
     <h3>
-        Genre: {{$Movie['Genre']}}
+        Year: <a href="/movies?year={{$Movie['Year']}}"> {{$Movie['Year']}} </a>
     </h3>
     <h3>
-        Director: {{$Movie['Director']}}
+        Genre: <a href="/movies?genre={{$Movie['Genre']}}"> {{$Movie['Genre']}} </a>
+    </h3>
+    <h3>
+        Director: <a href="/movies?director={{$Movie['Director']}}"> {{$Movie['Director']}} </a>
     </h3>
     <h3>
         Producer: {{$Movie['Producer']}}
