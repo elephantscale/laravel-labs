@@ -77,32 +77,3 @@
   * API Resources
   * Serialization
   * Factories
-
-* Testing (all optional)
-  * Getting Started
-  * HTTP Tests
-  * Console Tests
-  * Browser Tests
-  * Database
-  * Mocking
-
-* Packages (Overview)
-  * Breeze
-  * Cashier (Stripe)
-  * Cashier (Paddle)
-  * Dusk
-  * Envoy
-  * Fortify
-  * Homestead
-  * Horizon
-  * Jetstream
-  * Mix
-  * Octane
-  * Passport
-  * Pint
-  * Sail
-  * Sanctum
-  * Scout
-  * Socialite
-  * Telescope
-  * Valet
