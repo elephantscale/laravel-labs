@@ -1,24 +1,9 @@
-# Database Migration and Seeding
+# Model and Routing 
 
-### STEP 4) Navigate to Web Routes
-
-![image](https://user-images.githubusercontent.com/31894600/193736454-0d6ddfa6-5f42-475e-b4dd-d9f584513bb2.png)
-
-Replace you existing code with the following
-
+### STEP 1) Create and Eloquent Model
 
 ```bash
-sudo apt update
-```
-
-```bash
-sudo apt install mysql-server
-```
-
-Ensure that the server is running using the systemctl start command:
-
-```bash
-sudo systemctl start mysql.service
+php artisan make:model Movie
 ```
 
 ### STEP 2) Configure MySQL 
