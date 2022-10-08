@@ -26,6 +26,9 @@ Add following code
     <h3>
         Producer: {{$Movie['Producer']}}
     </h3>
+    <h3>
+        Actors: {{$Movie['Actors']}}
+    </h3>
     <p>
         {{$Movie['Description']}}
     </p>
