@@ -1,4 +1,4 @@
-# Filtering and Searching
+# Create new movies
 
 ### STEP 1) Add the filtering logic into the Movie Model
 
