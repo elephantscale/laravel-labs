@@ -73,5 +73,17 @@ Add the following code in the new created file
 
 ```
 
-### STEP 4) Create a search component
+### STEP 4) Add the search component into the 'movies.blade.php'
 
+Add the following code
+
+```php
+
+<h1>{{$title}}</h1>
+<x-search />
+<br />
+@foreach($movies as $Movie)
+    <x-movie-card :Movie="$Movie" />
+@endforeach
+
+```
