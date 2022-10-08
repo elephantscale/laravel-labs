@@ -1,4 +1,4 @@
-# Setup MySQL Dagtabase
+# Setup MySQL Database
 
 ### STEP 1) Install MySQL Server package
 
@@ -10,6 +10,8 @@ sudo apt update
 ```bash
 sudo apt install mysql-server
 ```
+
+(If you have any problem with mysql install, try `mysql-server-8.0`)
 
 Ensure that the server is running using the systemctl start command:
 
@@ -121,4 +123,10 @@ CREATE Database laravel_course
 Output
 
 Query OK, 1 row affected (0.01 sec)
+```
+
+Exit MySQL console
+
+```bash
+exit;
 ```
