@@ -1,107 +1,77 @@
-# Components and Controllers
+# Filtering
 
-### STEP 1) Create a components folder into the views folder
+### STEP 1) Add the filtering logic into the Movie Model
 
-![image](https://user-images.githubusercontent.com/31894600/194683736-baea2ef8-72dc-4f62-92ce-72610df697f5.png)
+![image](https://user-images.githubusercontent.com/31894600/194688453-b378e79a-2192-452d-a2a5-ce8e697b4d1b.png)
 
-Add following code
-
-```php
-@props(['Movie'])
-<div>
-    <h2>
-        <a href="/movies/{{$Movie['id']}}">
-            {{$Movie['Title']}} 
-        </a>
-    </h2>
-    <h3>
-        Year: <a href="/movies?year={{$Movie['Year']}}"> {{$Movie['Year']}} </a>
-    </h3>
-    <h3>
-        Genre: <a href="/movies?genre={{$Movie['Genre']}}"> {{$Movie['Genre']}} </a>
-    </h3>
-    <h3>
-        Director: <a href="/movies?director={{$Movie['Director']}}"> {{$Movie['Director']}} </a>
-    </h3>
-    <h3>
-        Producer: {{$Movie['Producer']}}
-    </h3>
-    <p>
-        {{$Movie['Description']}}
-    </p>
-</div>
-```
-
-### STEP 2) Use the component on the movies view
-
-Replace the code in 'movies.blade.php' file with the following code
+Replace the following function
 
 ```php
-<h1>{{$title}}</h1>
-@foreach($movies as $Movie)
-    <x-movie-card :Movie="$Movie" />
-@endforeach
+
+    public function scopeFilter($query, Request $request)
+    {
+        if($request['year'] ?? false)
+        {
+            $query->where('year', '=', $request['year'] );
+        }
+        else 
+        {
+            if($request['genre'] ?? false)
+            {
+                $query->where('genre', '=', $request['genre'] );
+            }
+            else
+            {
+                if($request['director'] ?? false)
+                {
+                    $query->where('director', '=', $request['director'] );
+                }
+            }
+        }
+        if($request['search'] ?? false)
+        {
+            $query->where('title', 'like', '%' . $request['search'] . '%' )
+              ->orWhere('description', 'like', '%' . $request['search'] . '%' )
+              ->orWhere('director', 'like', '%' . $request['search'] . '%' )
+              ->orWhere('producer', 'like', '%' . $request['search'] . '%' )
+              ->orWhere('actors', 'like', '%' . $request['search'] . '%' );
+        }
+    }
+
 ```
 
-### STEP 3) Create a Movie Controller
+### STEP 2) Add the filtering logic in the Movies Controller
 
-Run the following command
-
-```bash
-php artisan make:controller MoviesController
-```
-
-A new file with be created in 'app/Http/Controllers'
-
-![image](https://user-images.githubusercontent.com/31894600/194685997-20b41a6e-877c-461c-8a31-d059638fa696.png)
-
-
-Replace all the file content with the following code
+Change the index function with the following code
 
 ```php
-<?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Movie;
-
-class MoviesController extends Controller
-{
-    public function index()
+public function index()
     {
         return view('movies', [
             'title' => 'Movies',
-            'movies' => Movie::all()
+            'movies' => Movie::latest()->filter(request())->get()
         ]);
     }
 
-    public function show(Movie $movie)
-    {
-        return view('movie', [
-        
-            'Movie' => $movie
-        ]);
-
-    }
-}
 ```
 
-### STEP 3) Change the Routes to use the new MoviesController
+### STEP 3) Create a search component
 
-![image](https://user-images.githubusercontent.com/31894600/194686075-93bf31e4-9bc8-4091-9ee3-a74ad34605ba.png)
+Create a new file under the 'resources/views/components' with the name search.blade.php
 
-Replace the code in 'web.php' with the following code
+![image](https://user-images.githubusercontent.com/31894600/194688924-cbd2331c-9add-4aea-81d3-a3d8bf8bb3ef.png)
+
+Add the following code in the new created file
 
 ```php
 
-<?php
-
-use App\Http\Controllers\MoviesController;
-use Illuminate\Support\Facades\Route;
-use App\Models\Movie;
-
-Route::get('/movies', [MoviesController::class, 'index']);
-
-Route::get('/movies/{movie}', [MoviesController::class, 'show']);
+<form action="/">
+    <input type="text" name="search" />
+    <button type="submit">Search</button>
+</form>
 
 ```
+
+### STEP 4) Create a search component
+
