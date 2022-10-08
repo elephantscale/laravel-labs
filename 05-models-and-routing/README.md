@@ -33,7 +33,7 @@ Route::get('/movies/{id}', function ($id) {
 
 ```
 
-### STEP 3) Add Moview data into the Database Seed
+### STEP 3) Add Movies data into the Database Seed
 
 Open the DatabaseSeeder.php file
 
