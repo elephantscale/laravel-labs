@@ -31,7 +31,7 @@ Route::get('/movies/{id}', function ($id) {
     ]);
 });
 
-
+```
 
 ### STEP 3) Add Moview data into the Database Seed
 
