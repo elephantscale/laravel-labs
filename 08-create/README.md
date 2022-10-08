@@ -124,3 +124,17 @@ Add the following line in the 'movies.blade.php' view
 ```
 
 ![image](https://user-images.githubusercontent.com/31894600/194693808-6cca3ed9-c834-4338-b6e9-ba8e3059d1f2.png)
+
+
+### STEP 6) Add Error messages to fields validations
+
+Add the following code under each input in the 'movie-create.blade.php' changing the respective property name
+
+```php
+@error('title')
+    <span style="color: red;">{{$message}}</span>
+@enderror
+```
+
+
+
