@@ -139,3 +139,11 @@ Add the following code under each input in the 'movie-create.blade.php' changing
 ![image](https://user-images.githubusercontent.com/31894600/194712355-185adc72-c6ab-40db-8850-02f4821f9d47.png)
 
 
+### STEP 7) Open the app on your Browser
+
+```bash
+  php artisan serve
+```
+
+ http://127.0.0.1:8002/movies
+
