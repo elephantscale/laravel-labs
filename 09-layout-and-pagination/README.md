@@ -2,6 +2,8 @@
 
 ### STEP 1) Create new view with the name 'layout.blade.php'
 
+![image](https://user-images.githubusercontent.com/31894600/195249858-32202db5-d37d-4077-b864-246fe80ab280.png)
+
 Add the following code
 
 ```php
@@ -34,7 +36,12 @@ Surround the existing content with the following
 @endsection
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/195249984-fdd4cac6-22dd-45fe-9261-c4d23e9c29b7.png)
+
+
 ### STEP 3) Add Pagination to you Controller
+
+![image](https://user-images.githubusercontent.com/31894600/195250047-8ebb4b7f-ba24-4f82-b82c-8535b4525bb7.png)
 
 Change the `index` function with the following
 
@@ -68,7 +75,7 @@ Edit the `movies.blade.php` with the following
     <br />
     <x-search />
     <br />
-    {{$movies->links("pagination::bootstrap-4")}}
+    {{$movies->links("pagination::bootstrap-5")}}
     <br />
     <div class="container">
         <div class="row">
