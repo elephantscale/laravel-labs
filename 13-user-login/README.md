@@ -2,6 +2,8 @@
 
 ### STEP 1) Create a new view `login.blade.php`
 
+![image](https://user-images.githubusercontent.com/31894600/195363590-9f4f5bba-e877-4e01-8eed-43e375f1a76e.png)
+
 Add the following code
 
 ```html
