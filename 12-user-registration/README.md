@@ -70,6 +70,9 @@ Add the following code
 @endsection
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/195351718-9ac07c98-6de9-4729-9348-24bf0f799551.png)
+
+
 ### STEP 3) Add registration functions on the `UserController`
 
 Add the following code 
@@ -108,8 +111,6 @@ Route::get('/register', [UserController::class, 'create']);
 Route::post('/users', [UserController::class, 'store']);
 ```
 
-
-
 ### STEP 5) Add registration links in the `layout.blade.php`
 
 Add the following code
@@ -133,7 +134,6 @@ Add the following code
 </div>
 
 ```
-
 
 ### STEP 7) Add registration functions on the `UserController`
 
@@ -179,6 +179,9 @@ Add the following code
     @endauth
 </div>
 ```
+
+![image](https://user-images.githubusercontent.com/31894600/195351550-76519cc2-5099-46d6-a65b-43908f2e348e.png)
+
 
 ### STEP 10) Open the app on your Browser
 
