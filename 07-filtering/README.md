@@ -64,7 +64,7 @@ Create a new file under the 'resources/views/components' with the name search.bl
 
 Add the following code in the new created file
 
-```php
+```html
 
 <form action="/">
     <input type="text" name="search" />
@@ -77,7 +77,7 @@ Add the following code in the new created file
 
 Add the following code
 
-```php
+```html
 
 <h1>{{$title}}</h1>
 <x-search />

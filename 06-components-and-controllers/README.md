@@ -6,7 +6,7 @@
 
 Add following code
 
-```php
+```html
 @props(['Movie'])
 <div>
     <h2>
@@ -39,7 +39,7 @@ Add following code
 
 Replace the code in 'movies.blade.php' file with the following code
 
-```php
+```html
 <h1>{{$title}}</h1>
 @foreach($movies as $Movie)
     <x-movie-card :Movie="$Movie" />

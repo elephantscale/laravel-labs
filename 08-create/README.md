@@ -6,7 +6,7 @@
 
 Add the following code
 
-```php
+```html
 
 <h1>New Movie</h1>
 <br />

@@ -4,7 +4,7 @@
 
 Add the following code
 
-```php
+```html
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,8 +53,8 @@ Change the `index` function with the following
 
 Edit the `movies.blade.php` with the following
 
-```php
-`@extends('layout')
+```html
+@extends('layout')
 
 @section('content')
 

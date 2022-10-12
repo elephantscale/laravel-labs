@@ -102,7 +102,7 @@ php artisan db:seed
 
 Replace all code with the following
 
-```php
+```html
 <h1>{{$title}}</h1>
 @foreach($movies as $Movie)
 <h2>
@@ -129,7 +129,7 @@ Replace all code with the following
 
 Add the following code
 
-```php
+```html
 <h1>{{$Movie['Tittle']}}</h1>
 <h3>
     Genre: {{$Movie['Genre']}}

@@ -4,7 +4,7 @@
 
 Add the following code in the form
 
-```php
+```html
 <div>
    <span>
       Logo
@@ -20,7 +20,7 @@ Add the following code in the form
 
 Add the enctype as `multipart/form-data`
 
-```php
+```html
   <form method="POST" action="/movies" enctype="multipart/form-data">
 ```
 
@@ -29,7 +29,7 @@ Add the enctype as `multipart/form-data`
 Navigate to `filesystem.php` file and replace the default to use public
 
 ```php
- ` 'default' => env('FILESYSTEM_DISK', 'public'),
+ 'default' => env('FILESYSTEM_DISK', 'public'),
 ```
 
 ### STEP 4) Add a new column to store the file path in the database
@@ -70,7 +70,7 @@ if($request->hasFile('logo'))
 
 ### STEP 7) Add the image into the `movie-card.blade.php` component
 
-```php
+```html
    <img class="img-thumbnail" src="{{$Movie->Logo ? asset('storage/' . $Movie['Logo']) : asset('/images/no-image.png')}}" />
 ```
 
