@@ -123,19 +123,7 @@ Add the following code
 
 ```
 
-### STEP 6) Add registration links in the `layout.blade.php`
-
-Add the following code
-
-```html
-<div>
-    <a href="/register">Register</a>
-    <a href="/login">Login</a>
-</div>
-
-```
-
-### STEP 7) Add registration functions on the `UserController`
+### STEP 6) Add registration functions on the `UserController`
 
 Add the following code
 
@@ -151,7 +139,7 @@ Add the following code
   }
 ```
 
-### STEP 8) Add the routes for the logout endpoints
+### STEP 7) Add the routes for the logout endpoints
 
 Navigate to the Web routes
 
@@ -159,7 +147,7 @@ Navigate to the Web routes
 Route::post('/logout', [UserController::class, 'logout']);
 ```
 
-### STEP 9) Add the Logout button and the Auth links
+### STEP 8) Add the Logout button and the Auth links
 
 Add the following code
 
@@ -183,7 +171,7 @@ Add the following code
 ![image](https://user-images.githubusercontent.com/31894600/195351550-76519cc2-5099-46d6-a65b-43908f2e348e.png)
 
 
-### STEP 10) Open the app on your Browser
+### STEP 9) Open the app on your Browser
 
 ```bash
   php artisan serve
