@@ -54,11 +54,7 @@
 * Security
   * Authentication
   * Authorization
-  * Email Verification
   * Encryption
-  * Hashing
-  * Password Reset
-
 
 * Database
   * Getting Started
