@@ -1,4 +1,4 @@
-# User Login
+# Add Model Relationships
 
 ### STEP 1) Create a `MovieFactory.php` class 
 
