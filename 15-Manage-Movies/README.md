@@ -8,9 +8,14 @@ In the store function, add the following code
 $formFields['user_id'] = auth()->id();
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/195549932-79175c66-4b3f-4453-b0aa-80ba3056e2ca.png)
+
+
 ### STEP 2) Add a new view to manage movies
 
 Create a new view `movies-manage.blade.php`
+
+![image](https://user-images.githubusercontent.com/31894600/195549872-17f94592-8024-4ebf-bc72-edb433253074.png)
 
 ```html
 @extends('layout')
