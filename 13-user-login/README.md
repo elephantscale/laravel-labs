@@ -96,7 +96,44 @@ Navigate to the Web routes
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 ```
 
-### STEP 6) Open the app on your Browser
+### STEP 6) Add the auth middleware on the routes
+
+Add `middleware('auth')` to the routes to protect;
+
+```php
+Route::get('/movies/create', [MovieController::class, 'create'])->middleware('auth');
+```
+
+Do the same for the routes
+```
+store
+edit
+update
+destroy
+logout
+```
+
+### STEP 7) Add the guest middleware on the routes
+
+Add `middleware('guest')` to the routes to only available for guests;
+
+```php
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+```
+
+Do the same for the routes
+```
+login
+authenticate
+```
+
+### STEP 8) Add a name for the login route
+
+```php
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+```
+
+### STEP 9) Open the app on your Browser
 
 ```bash
   php artisan serve
