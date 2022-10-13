@@ -2,6 +2,8 @@
 
 ### STEP 1) Create a `MovieFactory.php` class 
 
+![image](https://user-images.githubusercontent.com/31894600/195532936-91bc15d1-22cb-45b8-96a6-b44b471b8164.png)
+
 Add the following code
 
 ```php
