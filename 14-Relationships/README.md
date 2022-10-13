@@ -105,7 +105,7 @@ public function movies()
 }
 ```
 
-### STEP 8) Run tinker to see relations
+### STEP 7) Run tinker to see relations
 
 ```bash
   php artisan tinker
@@ -117,7 +117,7 @@ Run the following command to check the movies related to the user
 \App\Models\User::first()->movies
 ```
 
-### STEP 9) Open the app on your Browser
+### STEP 8) Open the app on your Browser
 
 ```bash
   php artisan serve
