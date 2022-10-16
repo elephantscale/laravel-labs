@@ -1,6 +1,6 @@
 # Create an API for Movies
 
-### STEP 1) Modify the Movies Controller to store the user id
+### STEP 1) Create a new API Controller for Movies
 
 Run the following command to create a new API controller 
 
