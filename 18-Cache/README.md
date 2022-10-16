@@ -52,8 +52,68 @@ Add the following line in the Created() function on the`MoviesObserver.php`
 Cache::forget('movies');
 ```
 
+### STEP 6) Install Redis
 
+Run the following command
 
+```bash
+sudo apt update
+```
+```bash
+sudo apt install redis-server
+```
+```bash
+composer require predis/predis
+```
 
+### STEP 7) Configure Redis as your Cache driver
 
+In the file `config/database.php`, replace the `redis` section 
+
+```bash
+'redis' => [
+
+        'client' => env('REDIS_CLIENT', 'predis'),
+
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+        ],
+
+        'default' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_DB', '0'),
+        ],
+
+        'cache' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_CACHE_DB', '1'),
+        ],
+
+    ]
+```
+
+In the file `config/cache.php`, change the default driver to redis
+
+```bash
+'default' => env('CACHE_DRIVER', 'redis'),
+```
+
+In the `.env` file add 
+
+```bash
+REDIS_CLIENT=predis
+```
+
+In the `.env` change the`CACHE-DRIVER` to `redis`
+
+```bash
+CACHE_DRIVER=redis
+```
 
