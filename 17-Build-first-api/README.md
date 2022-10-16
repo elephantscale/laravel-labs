@@ -8,6 +8,8 @@ Run the following command to create a new API controller
 php artisan make:controller Api/MoviesController
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/196013751-a4a470b7-63f0-4f4b-9683-cbb2a516ae78.png)
+
 ### STEP 2) Add the first endpoint
 
 Add the following code
@@ -21,6 +23,8 @@ Add the following code
 ## STEP 3) Add the new route in the Api Route
 
 Add the following code
+
+![image](https://user-images.githubusercontent.com/31894600/196013757-59293634-6784-4021-98e8-de6fff8574c4.png)
 
 ```php
 Route::get('/movies', [MoviesController::class, 'index']);
@@ -64,6 +68,8 @@ Once done, save the file (Ctrl + S) and Exit (Ctrl + X)
 
 Search Postman Application and run it
 
+![image](https://user-images.githubusercontent.com/31894600/196013787-134f3cfc-e045-4ad3-80aa-3692aebc5095.png)
+
 
 ### STEP 5) Test the Movies API in Postman
 
@@ -75,6 +81,8 @@ php artisan serve
 
 In Postman do a Get to http://127.0.0.1:8002/api/movies/
 
+![image](https://user-images.githubusercontent.com/31894600/196013795-1f5ad0d4-c602-4e1d-882e-6a79b1be21e7.png)
+
 ### STEP 6) Transform with API Resources
 
 Run the following command to create an API Resource
@@ -82,6 +90,8 @@ Run the following command to create an API Resource
 ```bash
 php artisan make:resource MoviesResource
  ```
+
+![image](https://user-images.githubusercontent.com/31894600/196013801-79d94fdb-4eca-4994-a79b-686984d2114f.png)
 
 Replace the existing ToArray function with the following code
 
@@ -101,7 +111,7 @@ public function toArray($request)
 
 Test in Postman
 
-
+![image](https://user-images.githubusercontent.com/31894600/196013826-710ce9f6-cfdd-49a7-905d-782dad6658ee.png)
 
 In the `AppServiceProvider.php` add the following line in the `boot` method
 
@@ -111,12 +121,6 @@ JsonResource::withoutWrapping();
 
 Test in Postman
 
+![image](https://user-images.githubusercontent.com/31894600/196013839-3707efeb-d329-4ff9-a8d6-6fa48235c53c.png)
 
 
-### STEP 7) Open the app on your Browser
-
-```bash
-  php artisan serve
-```
-
-http://127.0.0.1:8002/movies
