@@ -36,6 +36,9 @@ Run the following command to create a new Observer
 php artisan make:observer MoviesObserver --model=Movie
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/196020169-c56cb274-712c-44cd-a1c9-791fde2467e4.png)
+
+
 ### STEP 4) Link the new Observer to the Movie Model
 
 Add the follwing code in the boot() function in the `AppServiceProvider.php`
