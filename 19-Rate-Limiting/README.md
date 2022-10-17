@@ -4,6 +4,8 @@
 
 - In the `create_users_table.php` file, replace the `up` function with the following code
 
+![image](https://user-images.githubusercontent.com/31894600/196095253-31a10e12-0799-4bbc-a4ef-89f7ad9ce828.png)
+
 ```php
  public function up()
     {
@@ -39,6 +41,8 @@ php artisan migrate:refresh --seed
 ```
 
 - In the `config\auth.php` file add a new guard
+
+![image](https://user-images.githubusercontent.com/31894600/196095283-3ea4a77e-e986-4aac-a68e-07c4e7756335.png)
 
  ```php
 'api' => [
