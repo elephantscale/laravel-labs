@@ -42,14 +42,15 @@ php artisan migrate:refresh --seed
 
 - In the `config\auth.php` file add a new guard
 
-![image](https://user-images.githubusercontent.com/31894600/196095283-3ea4a77e-e986-4aac-a68e-07c4e7756335.png)
-
  ```php
 'api' => [
      'driver' => 'token',
      'provider' => 'users'
      ]
  ```
+ 
+ ![image](https://user-images.githubusercontent.com/31894600/196095283-3ea4a77e-e986-4aac-a68e-07c4e7756335.png)
+
 
 ### STEP 2) Add the Throttle to the movies Endpoint
 
