@@ -1,122 +1,67 @@
-# Implement Cache
+# Implement Rate Limit
 
-### STEP 1) Install Clockwork tool (Not mandatory but a nice to have)
+### STEP 1) Add token authentication to the API
 
-- Install the Clockwork extension
-
-https://addons.mozilla.org/en-US/firefox/addon/clockwork-dev-tools/
-
-- Run the following command
-```bash
-  composer require itsgoingd/clockwork
-```
-
-Once Installed please ask the trainer to do quick overview and explain how it works.
-
-
-### STEP 2) Add Cache to get the Movies function
-
-In the `MoviesController.php` replace the Indec function with the following code.
+- In the `create_users_table.php` file, replace the `up` function with the following code
 
 ```php
- public function index()
- {
-    return MoviesResource::collection(Cache::remember('movies',  60, function()
+ public function up()
     {
-        return Movie::all();
-    }));
- }
-```
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('api_token')->unique()->nullable()->default(null);
+            $table->string('rate_limit');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+ ```
 
-### STEP 3) Add an Observer
+- In the `DatabaseSeeder.php` replace the user seed with the following code
 
-Run the following command to create a new Observer
+ ```php
+  $user = User::factory()->create([
+            'name' => 'Jhon Doe',
+            'email' => 'JhonD@gmail.com',
+            'api_token'=> Str::random(80),
+            'rate_limit'=> strval(rand(3, 10))
+        ]);
+ ```
 
-```bash
-php artisan make:observer MoviesObserver --model=Movie
-```
-
-![image](https://user-images.githubusercontent.com/31894600/196020169-c56cb274-712c-44cd-a1c9-791fde2467e4.png)
-
-
-### STEP 4) Link the new Observer to the Movie Model
-
-Add the follwing code in the boot() function in the `AppServiceProvider.php`
-
-```php
-Movie::observe(classes: MoviesObserver::class);
-```
-
-### STEP 5) Clean cache when a new Movie es created
-
-Add the following line in the Created() function on the`MoviesObserver.php`
-
-```php
-Cache::forget('movies');
-```
-
-### STEP 6) Install Redis
-
-Run the following command
+- Run the following command to run the migration and seed the database
 
 ```bash
-sudo apt update
-```
-```bash
-sudo apt install redis-server
-```
-```bash
-composer require predis/predis
+php artisan migrate:refresh --seed 
 ```
 
-### STEP 7) Configure Redis as your Cache driver
+- In the `config\auth.php` file add a new guard
 
-In the file `config/database.php`, replace the `redis` section 
+ ```php
+'api' => [
+     'driver' => 'token',
+     'provider' => 'users'
+     ]
+ ```
 
-```bash
-'redis' => [
+### STEP 2) Add the Throttle to the movies Endpoint
 
-        'client' => env('REDIS_CLIENT', 'predis'),
+In the `routes\api.php` replace the movies endpoint with
 
-        'options' => [
-            'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
-        ],
+ ```php
+Route::get('/movies', [MoviesController::class, 'index'])->middleware('auth:api', 'throttle:rate_limit,1');
+ ```
 
-        'default' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_DB', '0'),
-        ],
+### STEP 3) Add a Rate Limiter
 
-        'cache' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_CACHE_DB', '1'),
-        ],
 
-    ]
+In the `configureRateLimiting()` function on `RouteServiceProvider.php`file add the following code 
+
+ ```php
+ RateLimiter::for('movies_limiter', function (Request $request) {
+            return Limit::perMinute(2);
+    }); 
 ```
-
-In the file `config/cache.php`, change the default driver to redis
-
-```bash
-'default' => env('CACHE_DRIVER', 'redis'),
-```
-
-In the `.env` file add 
-
-```bash
-REDIS_CLIENT=predis
-```
-
-In the `.env` change the`CACHE-DRIVER` to `redis`
-
-```bash
-CACHE_DRIVER=redis
-```
-
