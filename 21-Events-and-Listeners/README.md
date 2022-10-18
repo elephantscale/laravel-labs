@@ -48,7 +48,7 @@ php artisan make:model Newsletter
 protected $fillable = ['email'];
 ```
 
-### STEP 4) Create a new Event
+### STEP 5) Create a new Event
 
 - Run the following command to create a new Event
 
@@ -70,7 +70,7 @@ public function __construct($user)
 ![image](https://user-images.githubusercontent.com/31894600/196337475-d60248d3-74a5-45a3-ac4e-27d5b75f3308.png)
 
 
-### STEP 5) Create a new Listener
+### STEP 6) Create a new Listener
 
 - Run the following command to create a new Event
 
@@ -81,7 +81,7 @@ php artisan make:listener AddToNewsletterListener
 ![image](https://user-images.githubusercontent.com/31894600/196337529-81d333d5-e497-4d57-8f5e-cd5c03fd18f2.png)
 
 
-### STEP 6) Register the event
+### STEP 7) Register the event
 
 - In the `EventServiceProvider.php` class replace the `$listen` property with the following code
 
@@ -95,7 +95,7 @@ protected $listen = [
 ];
 ```
 
-### STEP 7) Add the logic to execute in the listener
+### STEP 8) Add the logic to execute in the listener
 
 - In the `AddToNewsletterListener.php` class replace the `handle()` function with the following code
 
