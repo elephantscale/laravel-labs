@@ -8,6 +8,9 @@ Run the following command
 php artisan make:migration create_newsletters_table
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/196337378-09372b05-a9b4-4685-b4ef-8d1d4d46a99f.png)
+
+
 ### STEP 2) Edit the created Migration file
 
 
@@ -52,6 +55,7 @@ protected $fillable = ['email'];
 ```bash
 php artisan make:event UserResgisteredEvent 
 ```
+![image](https://user-images.githubusercontent.com/31894600/196337436-1081ef81-9c4b-433c-aa99-72c0d9fd783d.png)
 
 - Add a protected property to receive the `$user` as parameter in the constructor
 
@@ -63,6 +67,9 @@ public function __construct($user)
 }
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/196337475-d60248d3-74a5-45a3-ac4e-27d5b75f3308.png)
+
+
 ### STEP 5) Create a new Listener
 
 - Run the following command to create a new Event
@@ -71,9 +78,14 @@ public function __construct($user)
 php artisan make:listener AddToNewsletterListener
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/196337529-81d333d5-e497-4d57-8f5e-cd5c03fd18f2.png)
+
+
 ### STEP 6) Register the event
 
 - In the `EventServiceProvider.php` class replace the `$listen` property with the following code
+
+![image](https://user-images.githubusercontent.com/31894600/196337502-a0472e65-6f52-4760-898a-86bd066a4108.png)
 
 ```php
 protected $listen = [
