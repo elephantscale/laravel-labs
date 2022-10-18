@@ -107,3 +107,11 @@ protected $listen = [
         ]);
     }
 ```
+
+### STEP 8) Invoke the event on the User creation
+
+- In the `UserController.php` add the following line in the `store()` function
+
+```php
+event(new UserResgisteredEvent($user));
+```
