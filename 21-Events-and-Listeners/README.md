@@ -115,3 +115,5 @@ protected $listen = [
 ```php
 event(new UserResgisteredEvent($user));
 ```
+
+![image](https://user-images.githubusercontent.com/31894600/196339901-02354e96-4861-48e7-829a-301d9f3704b6.png)
