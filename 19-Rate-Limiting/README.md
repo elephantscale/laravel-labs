@@ -16,7 +16,7 @@
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('api_token')->unique()->nullable()->default(null);
-            $table->string('rate_limit');
+            $table->string('rate_limit')->default(strval(rand(3, 10)));
             $table->rememberToken();
             $table->timestamps();
         });
@@ -70,3 +70,22 @@ In the `configureRateLimiting()` function on `RouteServiceProvider.php`file add 
             return Limit::perMinute(2);
     }); 
 ```
+
+### STEP 4) Test the endpoint using Postman
+
+- Get the api_token from the database
+
+![image](https://user-images.githubusercontent.com/31894600/196324328-3e1c5d88-b3ff-4fcc-8575-50b0601ac06f.png)
+
+- Configure the Token in Postman as the following image
+_____________________________________________________________________________________________
+
+![image](https://user-images.githubusercontent.com/31894600/196324505-769a1250-ed1e-441e-b87a-708607201719.png)
+
+
+- Send the request mutiple times until get a 429 status error
+_____________________________________________________________________________________________
+
+![image](https://user-images.githubusercontent.com/31894600/196324866-c897a37a-fe43-466e-95da-1c8a2a825494.png)
+
+
