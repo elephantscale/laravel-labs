@@ -16,7 +16,7 @@
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('api_token')->unique()->nullable()->default(null);
-            $table->string('rate_limit');
+            $table->string('rate_limit')->default(strval(rand(3, 10)));
             $table->rememberToken();
             $table->timestamps();
         });
