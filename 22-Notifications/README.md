@@ -29,6 +29,9 @@
 php artisan make:notification SendRegistrationEmail 
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/196347652-676e68fa-6609-4942-96bc-bc399f053661.png)
+
+
 - Add a protected property to receive the `$user` as parameter in the constructor
 
 ```php
@@ -38,6 +41,9 @@ public function __construct($user)
     $this->user = $user;
 }
 ```
+
+![image](https://user-images.githubusercontent.com/31894600/196347694-f953e915-efc7-4c1a-84ea-3a69442a0c35.png)
+
 
 - Replace the `toMail()` function with the following code
 
@@ -57,6 +63,9 @@ public function toMail($notifiable)
   return ['mail', 'database'];
 ```
 
+![image](https://user-images.githubusercontent.com/31894600/196347803-4ee5739c-3377-4afc-a46f-b528a29886a0.png)
+
+
 ### STEP 3) Send Notification on the User creation
 
 - In the `UserController.php` add the following line in the `store()` function
@@ -64,6 +73,9 @@ public function toMail($notifiable)
 ```php
 $user->notify(new SendRegistrationEmail($user));
 ```
+
+![image](https://user-images.githubusercontent.com/31894600/196347782-46684acf-fd19-4a97-82f8-11b8c1f87e68.png)
+
 
 ### STEP 4) Create the Notification table Migration
 
@@ -73,6 +85,9 @@ $user->notify(new SendRegistrationEmail($user));
 ```bash
 php artisan notification:table
 ```
+
+![image](https://user-images.githubusercontent.com/31894600/196347740-b13fec82-b89b-4fe1-aa7f-26756c3a8322.png)
+
 
 - Run the following command to run the migration and seed the database
 
