@@ -1,4 +1,4 @@
-# Laravel Foundation Workshop
+# Laravel Advanced Workshop 
 
 ## Requirements
 
