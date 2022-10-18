@@ -24,9 +24,10 @@ In the config\queue.php file, change the default driver to use database
 
 ```php
 'default' => env('QUEUE_CONNECTION', 'database'),
+```
 
 ![image](https://user-images.githubusercontent.com/31894600/196491678-46705e46-9c88-402a-b58f-4c6742213cd5.png)
-```
+
 
 Change the .env file to use database as the QUEUE_CONNECTION
 
@@ -43,6 +44,8 @@ implements ShouldQueue
 ```
 
 ![image](https://user-images.githubusercontent.com/31894600/196492036-e04f7dae-b50d-4ef5-9be3-ee6364cccb8a.png)
+
+____________________________________________________________________________________________
 
 ![image](https://user-images.githubusercontent.com/31894600/196492115-df1f4916-8931-4a83-a78c-7056bbf47dfb.png)
 
