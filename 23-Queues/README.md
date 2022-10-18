@@ -1,4 +1,4 @@
-# Notifications
+# Queues
 
 ### STEP 1) Create the Queue Job table
 
