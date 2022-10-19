@@ -36,6 +36,20 @@ QUEUE_CONNECTION=database
 ```
 ![image](https://user-images.githubusercontent.com/31894600/196491715-42d7c17d-c0c6-48bc-9207-24c409ac52b4.png)
 
+
+implement ShouldQueue in your Notifications and Events
+
+```php
+implements ShouldQueue
+```
+
+![image](https://user-images.githubusercontent.com/31894600/196492036-e04f7dae-b50d-4ef5-9be3-ee6364cccb8a.png)
+
+____________________________________________________________________________________________
+
+![image](https://user-images.githubusercontent.com/31894600/196492115-df1f4916-8931-4a83-a78c-7056bbf47dfb.png)
+
+
 ### STEP 3) Install Supervisor
 
 Run the following command
@@ -79,16 +93,5 @@ sudo supervisorctl start laravel-worker:*
 ```
 
 
-implement ShouldQueue in your Notifications and Events
-
-```php
-implements ShouldQueue
-```
-
-![image](https://user-images.githubusercontent.com/31894600/196492036-e04f7dae-b50d-4ef5-9be3-ee6364cccb8a.png)
-
-____________________________________________________________________________________________
-
-![image](https://user-images.githubusercontent.com/31894600/196492115-df1f4916-8931-4a83-a78c-7056bbf47dfb.png)
 
 
