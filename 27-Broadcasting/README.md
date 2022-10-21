@@ -151,3 +151,22 @@ window.Echo.channel('notification')
     });
 ```
 
+### STEP 8) Testing
+
+- Before to run `php artisan serve` you need to run the following commands in a new terminal
+
+```bash
+npm install
+npm run dev
+```
+
+- Run the app
+
+```bash
+  php artisan serve
+```
+
+- Navigate to http://127.0.0.1:8002/listen
+
+- In Postman do a Get to http://127.0.0.1:8002/api/event/
+
