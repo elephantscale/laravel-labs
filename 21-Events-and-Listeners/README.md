@@ -72,7 +72,7 @@ public function __construct($user)
 
 ### STEP 6) Create a new Listener
 
-- Run the following command to create a new Event
+- Run the following command to create a new Listener
 
 ```bash
 php artisan make:listener AddToNewsletterListener
